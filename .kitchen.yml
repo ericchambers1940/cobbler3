@@ -1,0 +1,24 @@
+---
+driver:
+  name: dokken
+  chef_version: 17.6.18 
+  privileged: true
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+- name: centos-8
+  driver:
+    image: dokken/centos-8
+
+suites:
+  - name: cobbler-latest
+    run_list:
+    - recipe[cobbler3::default]

@@ -18,6 +18,8 @@ default['cobbler3']['install']['supporting_packages'] = %w(
   python3-schema
   python3-yaml
   rsync
+  tftp
+  xinetd
   syslinux
   tftp-server
   dhcp-server
@@ -31,14 +33,15 @@ default['cobbler3']['install']['dnf_modules'] = %w(
 
 # To add another distro, simply append an array nested inside this attribute with two values: the acutal file name of the iso image, the link to download it's iso file, and the architecture.
 default['cobbler3']['configure']['distros'] = [
-  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso', 'x86_64 ],
+  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso', 'x86_64' ]
 ]
 
 default['cobbler3']['configure']['services'] = [
-  'tftpd',
-  'httpd',
   'dhcpd',
-  'cobblerd'
+  'cobblerd',
+  'tftp-server',
+  'xinetd',
+  'httpd',
 ]
 
 ## dhcp.template.erb attributes

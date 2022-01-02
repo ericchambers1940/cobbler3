@@ -1,7 +1,7 @@
 ## Recipe: default_test.rb
 
 # Call in the default profile created when importing the first distro
-profile = node['cobbler3']['install']['distros'][0]
+profile = node['cobbler3']['configure']['distros'][0]
 
 # Create test system object in Cobbler
 execute 'create test system' do

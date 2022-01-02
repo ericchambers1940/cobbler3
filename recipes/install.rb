@@ -23,21 +23,3 @@ end
 package 'cobbler' do
   action :install
 end
-
-## Retrieve, mount, and persist ISO images
-node['cobbler3']['install']['distros'].each do |name, link|
-  remote_file "/opt/#{name}" do
-    source link
-  end
-
-  directory "/mnt/#{name}" do
-    recursive true
-  end
-
-  mount "/mnt/#{name}" do
-    device "/opt/#{name}"
-    fstype 'iso9660'
-    options 'loop,ro'
-    action [:mount, :enable]
-  end
-end

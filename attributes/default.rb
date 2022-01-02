@@ -20,6 +20,7 @@ default['cobbler3']['install']['supporting_packages'] = %w(
   rsync
   syslinux
   tftp-server
+  dhcp-server
 )
 
 # Array of dnf modules to be enabled
@@ -28,9 +29,16 @@ default['cobbler3']['install']['dnf_modules'] = %w(
   python36
 )
 
-# To add another distro, simply append an array nested inside this attribute with two values: the acutal file name of the iso image and the link to download its iso file.
-default['cobbler3']['install']['distros'] = [
-  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso' ],
+# To add another distro, simply append an array nested inside this attribute with two values: the acutal file name of the iso image, the link to download it's iso file, and the architecture.
+default['cobbler3']['configure']['distros'] = [
+  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso', 'x86_64 ],
+]
+
+default['cobbler3']['configure']['services'] = [
+  'tftpd',
+  'httpd',
+  'dhcpd',
+  'cobblerd'
 ]
 
 ## dhcp.template.erb attributes

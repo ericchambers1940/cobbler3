@@ -9,6 +9,7 @@ transport:
 
 provisioner:
   name: dokken
+  privileged: true
 
 verifier:
   name: inspec
@@ -22,3 +23,4 @@ suites:
   - name: cobbler-latest
     run_list:
     - recipe[cobbler3::default]
+    - recipe[cobbler3_test::default]

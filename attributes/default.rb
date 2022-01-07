@@ -23,6 +23,8 @@ default['cobbler3']['install']['supporting_packages'] = %w(
   syslinux
   tftp-server
   dhcp-server
+  pykickstart
+  yum-utils
 )
 
 # Array of dnf modules to be enabled
@@ -33,20 +35,19 @@ default['cobbler3']['install']['dnf_modules'] = %w(
 
 # To add another distro, simply append an array nested inside this attribute with two values: the acutal file name of the iso image, the link to download it's iso file, and the architecture.
 default['cobbler3']['configure']['distros'] = [
-  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso', 'x86_64' ]
+  [ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso', 'x86_64' ],
 ]
 
-default['cobbler3']['configure']['services'] = [
-  'dhcpd',
-  'cobblerd',
-  'tftp-server',
-  'xinetd',
-  'httpd',
-]
+default['cobbler3']['configure']['supporting_services'] = %w(
+  dhcpd
+  xinetd
+  tftp
+  httpd
+)
 
 ## dhcp.template.erb attributes
 # Enter in the primary DNS ip address your cobbler node will have
-default['cobbler3']['configure']['dns_ip'] = '192.168.1.1'
+default['cobbler3']['configure']['dns_ip'] = '172.18.0.1'
 
 # Subnet mask of the primary network interface
 default['cobbler3']['configure']['netmask'] = node['network']['interfaces']["#{primary_nic}"]['addresses']["#{primary_ip}"]['netmask']
@@ -56,5 +57,5 @@ default['cobbler3']['configure']['netmask'] = node['network']['interfaces']["#{p
 default['cobbler3']['configure']['netid'] = node['network']['interfaces']["#{primary_nic}"]['routes'][1]['destination'].sub(%r{/..}, '') # cuts out the CIDR notation at the end (i.e. /24)
 
 # Beginning and end of the dhcp range
-default['cobbler3']['configure']['dhcp_range_start'] = '192.168.1.5'
-default['cobbler3']['configure']['dhcp_range_end'] = '192.168.1.10'
+default['cobbler3']['configure']['dhcp_range_start'] = '172.18.0.2'
+default['cobbler3']['configure']['dhcp_range_end'] = '172.18.0.10'

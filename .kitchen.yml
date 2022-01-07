@@ -15,12 +15,17 @@ verifier:
   name: inspec
 
 platforms:
+- name: centos-stream-8
+  driver:
+    image: dokken/centos-stream-8
+    pid_one_command: /usr/lib/systemd/systemd
 - name: centos-8
   driver:
     image: dokken/centos-8
+    pid_one_command: /usr/lib/systemd/systemd 
 
 suites:
-  - name: cobbler-latest
+  - name: latest
     run_list:
     - recipe[cobbler3::default]
     - recipe[cobbler3_test::default]

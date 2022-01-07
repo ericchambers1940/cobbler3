@@ -217,7 +217,7 @@ puppet_parameterized_classes: true
 
 # set to true to enable Cobbler's DHCP management features.
 # the choice of DHCP management engine is in /etc/cobbler/modules.conf
-manage_dhcp: false
+manage_dhcp: true
 
 # set to true to enable Cobbler's DNS management features.
 # the choice of DNS mangement engine is in /etc/cobbler/modules.conf
@@ -276,7 +276,7 @@ nopxe_with_triggers: true
 
 # This setting is only used by the code that supports using Spacewalk/Satellite
 # authentication within Cobbler Web and Cobbler XMLRPC.
-redhat_management_server: "xmlrpc.rhn.redhat.com"
+redhat_management_server: ""
 
 # if using authn_spacewalk in modules.conf to let Cobbler authenticate
 # against Satellite/Spacewalk's auth system, by default it will not allow per user

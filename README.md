@@ -23,6 +23,24 @@ Installs and configures the latest version of Cobbler 3.x.x
     <th>Default</th>
   </tr>
   <tr>
+    <td>['cobbler3']['install']['dnf_modules']</th>
+    <td>Array</th>
+    <td>List of DNF modules needed to install software packages</th>
+    <td>cobbler, python36</th>
+  </tr>
+  <tr>
+    <td>['cobbler3']['install']['supporting_packages']</th>
+    <td>Array</th>
+    <td>List of all supporting packages excluding cobbler itself</th>
+    <td>See attributes/default.rb</th>
+  </tr>
+  <tr>
+    <td>['cobbler3']['configure']['distros']</th>
+    <td>Array of arrays</th>
+    <td>Contains list of distros, each with the ISO filename and download link </th>
+    <td>See attributes/default.rb</th>
+  </tr>
+  <tr>
     <td><tt>['cobbler']['configure']['root_password']</tt></td>
     <td>String</td>
     <td>Root password for Kickstart templates. Created using `openssl passwd -1`</td>

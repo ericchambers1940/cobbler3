@@ -9,19 +9,24 @@ end
 # Main cobbler configuration file
 template '/etc/cobbler/settings.yaml' do
   source 'settings.yaml.erb'
-  notifies :restart, 'service[cobblerd]', :immediately
+  notifies :restart, 'service[cobblerd]'
 end
 
 # Enable and start the Cobbler daemon
 service 'cobblerd' do
   action [ :enable, :start ]
-  notifies :run, 'execute[cobbler_sync]', :immediately
 end
 
 # DHCP configuration template
 template '/etc/cobbler/dhcp.template' do
   source 'dhcp.template.erb'
-  notifies :run, 'execute[cobbler_sync]', :immediately
+end
+
+# Cobbler sync command - invoked when updates to dhcp.template are made or when new distros are added.
+execute 'cobbler_sync' do
+  command 'cobbler sync'
+  action :nothing
+  subscribes :create, 'template[/etc/cobbler/dhcp.template]'
 end
 
 node['cobbler3']['configure']['supporting_services'].each do |svc|
@@ -53,9 +58,4 @@ node['cobbler3']['configure']['distros'].each do |name, link, arch|
     not_if "cobbler distro list | grep -i #{name}"
     notifies :run, 'execute[cobbler_sync]', :immediately
   end
-end
-
-execute 'cobbler_sync' do
-  command 'cobbler sync'
-  action :nothing
 end

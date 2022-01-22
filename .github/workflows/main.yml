@@ -26,9 +26,17 @@ jobs:
       - uses: actions/checkout@v2
 
       # Analyzes code for linting issues using new cookstyle. Fail if ANY issues are found 
-      - name: Run cookstyle
+      - name: Run Cookstyle
         run: cookstyle . --fail-level R
-      
+
+      - name: Cookstyle Error Handling
+        if: ${{ failure() }}
+        run: echo "Issues found with Chef code - review cookstyle results and fix accordingly"
+
       # Converge cookbook using dokken and execute Inspec tests
       - name: Run Integration Tests using Kitchen
         run: kitchen verify
+
+      - name: Kitchen Test Error Handling
+        if: ${{ failure() }}
+        run: echo "Unable to Converge or Verify cookbook - review kitchen verify output and fix accordingly"

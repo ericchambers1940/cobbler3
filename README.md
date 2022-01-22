@@ -50,7 +50,7 @@ Installs and configures the latest version of Cobbler 3.x.x available in EPEL
     <td>['cobbler3']['configure']['distros']</td>
     <td>String</td>
     <td>Add an array in this nested "array of arrays" with the distro iso filename, link to download it, and a Cobbler recognized arch (i.e. x86_64)</td>
-    <td>[[ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso' ]]</td>
+    <td>See attributes/default.rb</td>
   </tr>
   <tr>
     <td>['cobbler']['configure']['dns_ip']</td>
@@ -62,13 +62,13 @@ Installs and configures the latest version of Cobbler 3.x.x available in EPEL
     <td>['cobbler']['configure']['dhcp_range_start']</td>
     <td>String</td>
     <td>Beginning IP address in DHCP range</td>
-    <td><tt>172.18.0.2</tt></td>
+    <td>172.18.0.2</td>
   </tr>
   <tr>
     <td>['cobbler']['configure']['dhcp_range_end']</td>
     <td>String</td>
     <td>Last IP address used in DHCP range</td>
-    <td><tt>172.18.0.10</tt></td>
+    <td>172.18.0.10</td>
   </tr>
   <tr>
     <td><tt>['cobbler']['configure']['dhcp_range_end']</tt></td>

@@ -95,3 +95,4 @@ Include `cobbler3::default` in your node's `run_list`:
  - Add Oracle Linux 8 support
  - Add SUSE Linux support
  - Upload cookbook to Chef Supermarket
+ - Add CI functionality to this repo (if possible)

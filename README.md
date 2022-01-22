@@ -23,42 +23,40 @@ Installs and configures the latest version of Cobbler 3.x.x
     <th>Default</th>
   </tr>
   <tr>
-    <td>['cobbler3']['install']['dnf_modules']</th>
-    <td>Array</th>
-    <td>List of DNF modules needed to install software packages</th>
-    <td>cobbler, python36</th>
+    <td>['cobbler3']['install']['dnf_modules']</td>
+    <td>Array</td>
+    <td>List of DNF modules needed to install software packages</td>
+    <td>cobbler, python36</td>
   </tr>
   <tr>
-    <td>['cobbler3']['install']['supporting_packages']</th>
-    <td>Array</th>
-    <td>List of all supporting packages excluding cobbler itself</th>
-    <td>See attributes/default.rb</th>
+    <td>['cobbler3']['install']['supporting_packages']</td>
+    <td>Array</td>
+    <td>List of all supporting packages excluding cobbler itself</td>
+    <td>See attributes/default.rb</td>
   </tr>
   <tr>
-    <td>['cobbler3']['configure']['distros']</th>
-    <td>Array of arrays</th>
-    <td>Contains list of distros, each with the ISO filename and download link </th>
-    <td>See attributes/default.rb</th>
+    <td>['cobbler3']['configure']['distros']</td>
+    <td>Array of arrays</td>
+    <td>Contains list of distros, each with the ISO filename and download link </td>
+    <td>See attributes/default.rb</td>
   </tr>
   <tr>
-    <td><tt>['cobbler']['configure']['root_password']</tt></td>
+    <td>['cobbler']['configure']['root_password']</td>
     <td>String</td>
     <td>Root password for Kickstart templates. Created using `openssl passwd -1`</td>
-    <td><tt>'$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1'
-</tt></td>
+    <td>'$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1'</td>
   </tr>
   <tr>
-    <td><tt>['cobbler3']['configure']['distros']</tt></td>
+    <td>['cobbler3']['configure']['distros']</td>
     <td>String</td>
     <td>Add an array in this nested "array of arrays" with the distro iso filename, link to download it, and a Cobbler recognized arch (i.e. x86_64)</td>
-    <td><tt>[[ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso' ]]
-</tt></td>
+    <td>[[ 'CentOS-8.5.2111-x86_64-boot.iso', 'http://mirror.facebook.net/centos/8.5.2111/isos/x86_64/CentOS-8.5.2111-x86_64-boot.iso' ]]</td>
   </tr>
   <tr>
-    <td><tt>['cobbler']['configure']['dns_ip']</tt></td>
+    <td>['cobbler']['configure']['dns_ip']</td>
     <td>String</td>
     <td>Primary DNS server used by the node running Cobbler</td>
-    <td><tt>192.168.1.1</tt></td>
+    <td>192.168.1.1</td>
   </tr>
   <tr>
     <td><tt>['cobbler']['configure']['dhcp_range_start']</tt></td>
@@ -87,3 +85,11 @@ Include `cobbler3::default` in your node's `run_list`:
   ]
 }
 ```
+
+## To-do
+ - Write CONTRIBUTING.md file. Include info on testing cookbook changes
+ - Include adding profile in the cobbler_test fixture cookbook to expand testing scenarios
+ - Write Inspec tests for integration testing
+ - Make the template "settings.yaml.erb" more easily customizable by using attributes for most Cobbler settings
+ - Add Oracle Linux 8 support
+ - Add SUSE Linux support

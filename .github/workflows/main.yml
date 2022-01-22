@@ -25,10 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # List out the GITHUB_WORKSPACE directory for debugging purposes
-      - name: Run a one-line script
-        run: ls $GITHUB_WORKSPACE
+      # Analyzes code for linting issues using new cookstyle 
+      - name: Run cookstyle
+        run: cookstyle .
+      
+      # Also checks for linting issues using legacy foodcritic  
+      - name: Run foodcritic
+        run: foodcritic .
 
-      # Print the working directory for debugging purposes
-      - name: Run a multi-line script
-        run: pwd
+      # Converge cookbook using dokken and execute Inspec tests
+      - name: Run Integration Tests using Kitchen
+        run: kitchen verify

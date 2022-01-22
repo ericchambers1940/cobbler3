@@ -56,20 +56,37 @@ Installs and configures the latest version of Cobbler 3.x.x available in EPEL
     <td>['cobbler']['configure']['dns_ip']</td>
     <td>String</td>
     <td>Primary DNS server used by the node running Cobbler</td>
-    <td>192.168.1.1</td>
+    <td>172.18.0.1</td>
   </tr>
   <tr>
-    <td><tt>['cobbler']['configure']['dhcp_range_start']</tt></td>
+    <td>['cobbler']['configure']['dhcp_range_start']</td>
     <td>String</td>
     <td>Beginning IP address in DHCP range</td>
-    <td><tt>192.168.1.5</tt></td>
+    <td><tt>172.18.0.2</tt></td>
+  </tr>
+  <tr>
+    <td>['cobbler']['configure']['dhcp_range_end']</td>
+    <td>String</td>
+    <td>Last IP address used in DHCP range</td>
+    <td><tt>172.18.0.10</tt></td>
   </tr>
   <tr>
     <td><tt>['cobbler']['configure']['dhcp_range_end']</tt></td>
     <td>String</td>
     <td>Last IP address used in DHCP range</td>
-    <td><tt>192.168.1.10</tt></td>
+    <td>172.18.0.10</td>
   </tr>
+  <tr>
+    <td>['cobbler3']['configure']['netmask']</td>
+    <td>String</td>
+    <td>Subnet mask used in dhcp.template.erb</td>
+    <td>Automatically defined using Ohai attributes</td>
+  </tr>  
+    <td>['cobbler3']['configure']['netid']</td>
+    <td>String</td>
+    <td>Subnet ID used in dhcp.template.erb</td>
+    <td>Automatically defined using Ohai attributes</td>
+  </tr>    
 </table>
 
 ## Usage

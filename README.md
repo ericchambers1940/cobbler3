@@ -1,7 +1,7 @@
 cobbler3
 ================
 
-Installs and configures the latest version of Cobbler 3.x.x
+Installs and configures the latest version of Cobbler 3.x.x available in EPEL
 
 ## Supported Platforms
 - CentOS 8 Stream
@@ -11,7 +11,7 @@ Installs and configures the latest version of Cobbler 3.x.x
 - recipe[cobbler3::default] (calls other recipes in a specific order)
 - recipe[cobbler3::install] (installation tasks, largly handling packages)
 - recipe[cobbler3::configure] (cobbler configuration tasks including config files, services, ISO retrieval and mounts, and cobbler commands)
-- recipe[cobbler3_test::default] (only used during kitchen testing. Creates a test system)
+- recipe[cobbler3_test::default] (used for Kitchen testing - creates various scenarios such as adding a system to cobbler)
 
 ## Attributes
 

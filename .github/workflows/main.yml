@@ -25,14 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Analyzes code for linting issues using new cookstyle 
+      # Analyzes code for linting issues using new cookstyle. Fail if ANY issues are found 
       - name: Run cookstyle
-        run: cookstyle .
+        run: cookstyle . --fail-level R
       
-      # Also checks for linting issues using legacy foodcritic  
-      - name: Run foodcritic
-        run: foodcritic .
-
       # Converge cookbook using dokken and execute Inspec tests
       - name: Run Integration Tests using Kitchen
         run: kitchen verify

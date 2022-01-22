@@ -1,0 +1,34 @@
+# Workflow used for testing the cobbler3 cookbook
+
+name: cobbler3-cookbook-CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build:
+    # Use the Ubuntu runner and spin up a Chef Workstation Docker container
+    runs-on: ubuntu-latest
+    container:
+      image: chef/chefworkstation:22.1.772
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # List out the GITHUB_WORKSPACE directory for debugging purposes
+      - name: Run a one-line script
+        run: ls $GITHUB_WORKSPACE
+
+      # Print the working directory for debugging purposes
+      - name: Run a multi-line script
+        run: pwd

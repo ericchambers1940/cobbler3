@@ -71,7 +71,7 @@ Installs and configures the latest version of Cobbler 3.x.x available in EPEL
     <td>172.18.0.10</td>
   </tr>
   <tr>
-    <td><tt>['cobbler']['configure']['dhcp_range_end']</tt></td>
+    <td>['cobbler']['configure']['dhcp_range_end']</td>
     <td>String</td>
     <td>Last IP address used in DHCP range</td>
     <td>172.18.0.10</td>

@@ -4,8 +4,8 @@ cobbler3
 Installs and configures the latest version of Cobbler 3.x.x
 
 ## Supported Platforms
-- CentOS 8.3
-- CentOS 8.5
+- CentOS 8 Stream
+- CentOS 8
 
 ## Recipes
 - recipe[cobbler3::default] (calls other recipes in a specific order)
@@ -60,12 +60,12 @@ Installs and configures the latest version of Cobbler 3.x.x
 
 ### cobbler::default
 
-Include `cobblerd` in your node's `run_list`:
+Include `cobbler3::default` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[cobblerd::default]"
+    "recipe[cobbler3::default]"
   ]
 }
 ```

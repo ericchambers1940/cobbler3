@@ -6,12 +6,6 @@ execute 'disable_selinux' do
   only_if 'getenforce | grep Disabled'
 end
 
-# DHCP configuration template
-template '/etc/cobbler/dhcp.template' do
-  source 'dhcp.template.erb'
-  notifies :run, 'execute[cobbler_sync]', :immediately
-end
-
 # Main cobbler configuration file
 template '/etc/cobbler/settings.yaml' do
   source 'settings.yaml.erb'
@@ -21,6 +15,12 @@ end
 # Enable and start the Cobbler daemon
 service 'cobblerd' do
   action [ :enable, :start ]
+  notifies :run, 'execute[cobbler_sync]', :immediately
+end
+
+# DHCP configuration template
+template '/etc/cobbler/dhcp.template' do
+  source 'dhcp.template.erb'
   notifies :run, 'execute[cobbler_sync]', :immediately
 end
 

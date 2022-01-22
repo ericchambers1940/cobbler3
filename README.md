@@ -88,7 +88,7 @@ Include `cobbler3::default` in your node's `run_list`:
 
 ## To-do
  - Write CONTRIBUTING.md file. Include info on testing cookbook changes
- - Add profile management functionality
+ - Add profile/kickstart template management functionality
  - Include adding profile in the cobbler_test fixture cookbook to expand testing scenarios
  - Write Inspec tests for integration testing
  - Make the template "settings.yaml.erb" more easily customizable by using attributes for most Cobbler settings

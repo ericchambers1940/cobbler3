@@ -17,16 +17,19 @@ service 'cobblerd' do
   action [ :enable, :start ]
 end
 
+# Give cobblerd extra time to bake. Otherwise, 'cobbler_sync' may run into issues.
+chef_sleep '5'
+
 # DHCP configuration template
 template '/etc/cobbler/dhcp.template' do
   source 'dhcp.template.erb'
+  notifies :run, 'execute[cobbler_sync]', :immediate
 end
 
 # Cobbler sync command - invoked when updates to dhcp.template are made or when new distros are added.
 execute 'cobbler_sync' do
   command 'cobbler sync'
   action :nothing
-  subscribes :create, 'template[/etc/cobbler/dhcp.template]'
 end
 
 node['cobbler3']['configure']['supporting_services'].each do |svc|

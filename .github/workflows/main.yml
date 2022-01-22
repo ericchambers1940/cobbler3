@@ -27,20 +27,8 @@ jobs:
 
       # Analyzes code for linting issues using new cookstyle. Fail if ANY issues are found 
       - name: Run Cookstyle
-        run: | 
-          cookstyle . --fail-level R
-          if [ $? -ne 0 ]; then
-            echo "Issues found when running cookstyle - review output and fix all issues before pushing again"
-          else
-            echo "cookstyle ran and found no issues"
-          fi
+        run: cookstyle . --fail-level R
 
       # Converge cookbook using dokken and execute Inspec tests
       - name: Run Integration Tests using Kitchen
-        run: |
-          kitchen verify
-          if [ $? -ne 0 ]; then
-            echo "The cookbook failed to converge or verify - review output and fix all issues before pushing again"
-          else
-            echo "The cookbook passed all converges and verifications"
-          fi           
+        run: kitchen verify

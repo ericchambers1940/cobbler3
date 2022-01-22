@@ -23,7 +23,7 @@ chef_sleep '5'
 # DHCP configuration template
 template '/etc/cobbler/dhcp.template' do
   source 'dhcp.template.erb'
-  notifies :run, 'execute[cobbler_sync]', :immediate
+  notifies :run, 'execute[cobbler_sync]', :immediately
 end
 
 # Cobbler sync command - invoked when updates to dhcp.template are made or when new distros are added.

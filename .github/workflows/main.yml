@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Workaround attempt to get dokken driver to work
+      - name: Update dokken gem
+        run: gem update kitchen-dokken
+
       # Analyzes code for linting issues using new cookstyle. Fail if ANY issues are found 
       - name: Run Cookstyle
         run: cookstyle . --fail-level R

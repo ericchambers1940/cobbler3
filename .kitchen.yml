@@ -3,14 +3,12 @@ driver:
   name: dokken
   chef_version: 17.6.18 
   privileged: true
-  pid_one_command: /usr/lib/systemd/systemd
 
 transport:
   name: dokken
 
 provisioner:
   name: dokken
-  privileged: true
   chef_license: accept
 
 verifier:
@@ -20,9 +18,14 @@ platforms:
 - name: centos-stream-8
   driver:
     image: dokken/centos-stream-8
+    pid_one_command: /usr/lib/systemd/systemd
+    privileged: true
+    
 - name: centos-8
   driver:
     image: dokken/centos-8
+    pid_one_command: /usr/lib/systemd/systemd
+    privileged: true
 
 suites:
   - name: latest

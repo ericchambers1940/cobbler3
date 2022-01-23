@@ -3,6 +3,7 @@ driver:
   name: dokken
   chef_version: 17.6.18 
   privileged: true
+  pid_one_command: /bin/systemd
 
 transport:
   name: dokken

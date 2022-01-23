@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     # Use the Ubuntu runner and spin up a Chef Workstation Docker container
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     container:
       image: chef/chefworkstation:latest
 

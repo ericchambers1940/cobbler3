@@ -17,13 +17,16 @@ jobs:
   build:
     # Use the Ubuntu runner and spin up a Chef Workstation Docker container
     runs-on: ubuntu-20.04
-    container:
-      image: chef/chefworkstation:21.12.724 
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Setup Chef Workstation
+        run: |
+          wget https://packages.chef.io/files/stable/chef-workstation/21.10.640/ubuntu/20.04/chef-workstation_21.10.640-1_amd64.deb
+          dpkg -i chef-workstation_21.10.640-1_amd64.deb
       
       # Analyzes code for linting issues using new cookstyle. Fail if ANY issues are found 
       - name: Run Cookstyle

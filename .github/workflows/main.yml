@@ -16,9 +16,9 @@ on:
 jobs:
   build:
     # Use the Ubuntu runner and spin up a Chef Workstation Docker container
-    runs-on: macos-11
+    runs-on: ubuntu-20.04
     container:
-      image: chef/chefworkstation:latest
+      image: chef/chefworkstation:21.12.724 
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

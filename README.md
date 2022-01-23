@@ -104,7 +104,7 @@ Include `cobbler3::default` in your node's `run_list`:
 ```
 
 ## To-do
- - Write CONTRIBUTING.md file. Include info on testing cookbook changes
+ - Write CONTRIBUTING.md file. Include info on testing cookbook changes **DONE 01/22/2022**
  - Add profile/kickstart template management functionality
  - Include adding profile in the cobbler_test fixture cookbook to expand testing scenarios
  - Write Inspec tests for integration testing
@@ -112,4 +112,4 @@ Include `cobbler3::default` in your node's `run_list`:
  - Add Oracle Linux 8 support
  - Add SUSE Linux support
  - Upload cookbook to Chef Supermarket
- - Add CI functionality to this repo (if possible)
+ - Add CI functionality using Github Actions **DONE 01/22/2022**
